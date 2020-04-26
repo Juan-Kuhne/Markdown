@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Linux Fundamentos</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body class="vscode-light">
+        <h1 id="linux-fundamentos">Linux Fundamentos</h1>
+<h2 id="comandos">Comandos</h2>
+<ul>
+<li><strong>man</strong> ou <strong>--help</strong> =&gt; manual de comandos</li>
+<li><strong>su</strong> =&gt; troca pelo usuário determinado, o padrão sem argumentos é o root</li>
+<li><strong>apt</strong> =&gt; gerenciador de pacotes
+<ul>
+<li><strong>install</strong> =&gt; instala pacotes</li>
+<li><strong>remove</strong> =&gt; remove/desinstala pacotes</li>
+<li><strong>update</strong> =&gt; atualiza o referencial dos repositórios</li>
+<li><strong>upgrade</strong> =&gt; atualiza pacotes</li>
+</ul>
+</li>
+<li><strong>sudo</strong> =&gt; concede permissão de administrador a um comando (usuário precisa estar referenciado no arquivo sudoers == <strong># usermod -aG sudo nomeUsuario</strong>)</li>
+<li><strong>psswd</strong> =&gt; troca senha do usuário determinado, padrão sem argumentos é o user atual</li>
+<li><strong>useradd</strong> =&gt; adiciona novos usuários</li>
+<li><strong>groupadd</strong> =&gt; cria grupos de usuários</li>
+<li><strong>usermod</strong> =&gt; modifica atributos de usuários</li>
+<li><strong>ls</strong> =&gt; lista diretórios
+<ul>
+<li><strong>-a</strong> =&gt; mostra todos os arquivos, incluindo os ocultos</li>
+<li><strong>-l</strong> =&gt; lista longa, com informações dos arquivos e diretórios</li>
+<li><strong>-h</strong> =&gt; abrevia informações para legibilidade humana</li>
+</ul>
+</li>
+<li><strong>pwd</strong> =&gt; retorna o diretório atual</li>
+<li><strong>mkdir</strong> =&gt; cria diretórios
+<ul>
+<li><strong>-p</strong> =&gt; permite a criação de diretórios em cascata</li>
+</ul>
+</li>
+<li><strong>cd</strong> =&gt; muda de diretório</li>
+<li><strong>cp</strong> =&gt; faz cópias de arquivos e diretórios
+<ul>
+<li><strong>-r</strong> =&gt; recursivo, copia o conteúdo de dentro de um diretório junto com ele</li>
+<li><strong>-v</strong> =&gt; verbose</li>
+<li><strong>-p</strong> =&gt; preserva permissões na cópia</li>
+</ul>
+</li>
+<li><strong>mv</strong> =&gt; move e renomeia arquivos e diretórios</li>
+<li><strong>rm</strong> =&gt; deleta arquivos e diretórios
+<ul>
+<li><strong>-r</strong> =&gt; recursivo, apaga arquivos dentro de diretórios sendo apagados</li>
+</ul>
+</li>
+<li><strong>rmdir</strong> =&gt; deleta diretórios vazios</li>
+<li><strong>cat</strong> =&gt; retorna conteúdo de arquivo texto no terminal</li>
+<li><strong>head</strong> =&gt; retorna o cabeçalho de um arquivo texto no terminal</li>
+<li><strong>tale</strong> =&gt; retorna as ultimas linhas de um arquivo texto no terminal</li>
+<li><strong>less</strong> =&gt; navega dentro de um arquivo texto(trava terminal)</li>
+<li><strong>updatedb</strong> =&gt; atualiza o database para o uso do <strong>locate</strong></li>
+<li><strong>locate</strong> =&gt; (apt install) localiza arquivos</li>
+<li><strong>grep</strong> =&gt; faz buscas por palavras chave</li>
+<li><strong>wget</strong> =&gt; baixa arquivos da internet através da url do mesmo
+<ul>
+<li><strong>-c</strong> =&gt; continua um downlod interrompido por <em>ctrl+c</em></li>
+</ul>
+</li>
+<li><strong>links</strong> =&gt; (apt install) navegador em linhas de comando</li>
+<li><strong>unzip</strong> =&gt; descompacta arquivos
+<ul>
+<li><strong>-t</strong> =&gt; testa os arquivos compactados</li>
+</ul>
+</li>
+<li><strong>gzip</strong>//<strong>bzip2</strong> =&gt; comprimi arquivos(pode ser preciso empacotar antes com <strong>tar</strong>)</li>
+<li><strong>tar</strong> =&gt; empacota arquivos e diretórios
+<ul>
+<li><strong>-c</strong> =&gt; compress</li>
+<li><strong>-z</strong> =&gt; compressão usando gzip</li>
+<li><strong>-j</strong> =&gt; compressão usando bzip2</li>
+<li><strong>-v</strong> =&gt; verbose</li>
+<li><strong>-f</strong> =&gt; nomeia arquivo de saída empacotado</li>
+<li><strong>-t</strong> =&gt; testa os arquivos empacotados</li>
+<li><strong>-x</strong> =&gt; desempacota ou descomprime</li>
+</ul>
+</li>
+<li><strong>ifconfig</strong> =&gt; gerencia as interfaces de rede ativas</li>
+<li><strong>halt</strong> =&gt; gerencia rotas de rede</li>
+<li><strong>ps</strong> =&gt; retorna informações de processos (programas executando)
+<ul>
+<li><strong>-a</strong> =&gt; mostra todos os processos, incluindo os de outros usuários</li>
+<li><strong>-u</strong> =&gt; detalha informações dos processos</li>
+<li><strong>-x</strong> =&gt; mostra processos de outros terminais</li>
+</ul>
+</li>
+<li><strong>top</strong> =&gt; monitor de processos em tempo real</li>
+<li><strong>kill</strong> =&gt; finaliza (&quot;mata&quot;) um processo pelo numero do processo ou PID (adquirido pelo comando <em>ps</em>)
+<ul>
+<li><strong>-SIGSTOP</strong> =&gt; congela o processo determinado</li>
+<li><strong>-SIGCONT</strong> =&gt; descongela um processo congelado</li>
+<li><strong>SIGKILL</strong> =&gt; finaliza um processo determinado, utilizado por padrão quando nenhum argumento é passado ao <em>kill</em></li>
+</ul>
+</li>
+<li><strong>killall</strong> =&gt; finaliza um processo pelo nome do processo, e todos os outros processos de mesmo nome</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Rodar programas por terminal trava a tela do terminal, se o comando for seguido de <em>&amp;</em>, o programa inicia em segundo plano e a trava não é feita, além do número do PID ser retornado no terminal</strong></li>
+<li><strong>O símbolo | concatena comandos</strong></li>
+<li><strong>ctrl+c no terminal permite busca de comandos anteriormente realizados pelo usuário</strong></li>
+</ul>
+<hr>
+<h2 id="diret%c3%b3rios">Diretórios</h2>
+<ul>
+<li><strong>/bin</strong> =&gt; armazena os principais executáveis de comandos</li>
+<li><strong>/boot</strong> =&gt; diretório de bootagem do sistema operacional</li>
+<li><strong>/dev</strong> =&gt; armazena pseudoarquivos</li>
+<li><strong>/etc</strong> =&gt; arquivos de configuração</li>
+<li><strong>/home</strong> =&gt; diretórios de usuários</li>
+<li><strong>/lib</strong> =&gt; bibliotecas de sistema</li>
+<li><strong>/lost+found</strong> =&gt; achados e perdidos de arquivos corrompidos</li>
+<li><strong>/opt</strong> =&gt; diretório opciona de instalação</li>
+<li><strong>proc</strong> =&gt; arquivos do processador</li>
+<li><strong>/root</strong> =&gt; diretório do superusuario</li>
+<li><strong>/run</strong> =&gt; processos dos programas</li>
+<li><strong>/sbin</strong> =&gt; super binários</li>
+<li><strong>/tmp</strong> =&gt; arquivos temporários</li>
+<li><strong>/usr</strong> =&gt; programas instalados</li>
+<li><strong>/var</strong> =&gt; arquivos de tamanhos variáveis</li>
+</ul>
+<hr>
+<h2 id="editor-de-textos-vi">Editor de textos Vi</h2>
+<ul>
+<li><strong>:q</strong> =&gt; sair</li>
+<li><strong>:q!</strong> =&gt; sair sem salvar</li>
+<li><strong>i</strong> =&gt; vai para o modo de edição para inserir caracteres</li>
+<li><strong>a</strong> =&gt; vai para o modo de edição para inserir caracteres partindo do caractere seguinte do atual (append)</li>
+<li><strong>A</strong> =&gt; modo de edição para inserir caracteres partindo do final da linha atual</li>
+<li><strong>o</strong> =&gt; modo de edição para inserir caracteres partindo da linha abaixo da atual</li>
+<li><strong>:set nu</strong> =&gt; habilita o número das linhas</li>
+<li><strong>:<em>numero</em></strong> =&gt; vai para alinha determinada</li>
+<li><strong>G</strong> =&gt; vai para a ultima linha do arquivo</li>
+<li><strong>$</strong> =&gt; desloca para o final da linha atual</li>
+<li><strong>^</strong> =&gt; desloca para o inicio da linha atual</li>
+<li><strong>:w</strong> =&gt; salva o arquivo (write)</li>
+<li><strong>:wq</strong> ou <strong>:x</strong>=&gt; salva e sai do arquivo</li>
+<li><strong>:<em>numero1</em>,_numero2_w nomeDoArquivo.txt</strong> =&gt; salva o intervalo de linhas determinado no arquivo informado</li>
+<li><strong>yy</strong> =&gt; copia a linha atual</li>
+<li><strong>p</strong> =&gt; cola a linha copiada abaixo da atual</li>
+<li><strong>_numero_yy</strong> =&gt; copia o numero de linhas determinado a partir da linha atual</li>
+<li><strong>y$</strong> =&gt; copia um trecho de caracteres começando do atual até o final da linha</li>
+<li><strong>y^</strong> =&gt; copia um trecho de caracteres começando do atual até o começo da linha</li>
+<li><strong>dd</strong> =&gt; apaga/recorta linha atual</li>
+<li><strong>_numero_dd</strong> =&gt; apaga um intervalo de linhas determinado começando da atual</li>
+<li><strong>d$</strong> =&gt; apaga um trecho de caracteres começando do atual até o final da linha</li>
+<li><strong>d^</strong> =&gt; apaga um trecho de caracteres começando do atual até o começo da linha</li>
+<li><strong>U</strong> =&gt; desfaz a ultima ação (funciona para apenas um comando)</li>
+<li><strong>/<em>palavra</em></strong> =&gt; localiza a palavra informada
+<ul>
+<li><strong>n</strong> =&gt; avança pelas ocorrências da palavra informada</li>
+<li><strong>N</strong> =&gt; retorna pelas ocorrências da palavra informada</li>
+</ul>
+</li>
+<li><strong>:%s/<em>palavraAserSubstituida</em>/<em>palavraFinal</em>/<em>argumento</em></strong> =&gt; substitui palavras
+<ul>
+<li>argumento <strong>g</strong> =&gt; substitui todas as ocorrências</li>
+<li>argumento <strong>c</strong> =&gt; exige uma confirmação antes de executar cada substituição</li>
+</ul>
+</li>
+</ul>
+
+    </body>
+    </html>
