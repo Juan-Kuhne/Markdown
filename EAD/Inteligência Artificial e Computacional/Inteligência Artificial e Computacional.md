@@ -57,3 +57,21 @@
 ### Métodos de Busca por solução
 ![Árvore de decisão](fig01.png)
 * Cada possível solução de um problema forma o que chamamos de **árvore de busca**. Uma árvore consiste em uma estrutura de dados não linear composta por *nós* (informações) organizadas hierarquicamente
+* Critérios de avaliação da busca
+  * Completeza
+    * Capacidade do algoritmo pesquisar a arvore toda caso necessário
+  * Otimalidade
+    * Capacidade de encontrar a melhor solução
+  * Complexidade de tempo
+    * Tempo médio para se encontrar a solução
+  * Complexidade de espaço
+    * Espaço contido na árvore que será processado pelo algoritmo
+
+### Busca sem informação
+* A busca sem informação, ou busca cega, é realizada sem informação adicional sobre os estados, além da definição do problema. A estratégia é gerar novos estados e verificar se um estado objetivo é alcnçado ou não. Difere na ordem em que os estados são explorados: *busca em largura* ou *em profundidade*
+* Busca em largura
+  * A busca em largura (BFS - *Breadth-First Search*) é uma estratégia em que o nó raiz é verificado antes dos nós filhos do nó raiz. Essa estratégia é utilizada recursivamente para os nós internos da árvore (subárvores)
+* Busca em profundidade
+  * Na busca em profundidade (DFS - *Depth-First Search*) busca-se o nó mais profundo a partir da raiz
+
+### Busca informada
