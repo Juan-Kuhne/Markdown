@@ -53,12 +53,36 @@ Existem diversos serviços disponíveis na internet. O ponto em comum entre os s
 * E-mail
 
 ##### World Wide Web (www)
-Serviço de acesso a informações por hipertexto. A busca e obtenção de informações utiliza um mecanismo de navegação conhecido por hipertexto, que cria a imagem de uma teia que interliga documentos pela internet. vem daí o nome, que traduzido fica *teia de alcance mundial*
+Serviço de acesso a informações por hipertexto. A busca e obtenção de informações utiliza um mecanismo de navegação conhecido por hipertexto, que cria a imagem de uma teia que interliga documentos pela internet. vem daí o nome, que traduzido fica *teia de alcance mundial*.
 
-Esses documentos ...
+A estrutura dos documentos é desenvolvida através da linguagem HTML (HyperText Markup Language), que permite a ligação com outros documentos (hiperlinks). Um documento HTML é localizado na WWW por um identificador conhecido como Universal Resource Location (URL), que identifica o tipo de serviço, o endereço do servidor e onde o documento está, dentro desse servidor.
+* https://www.fiap.com.br/home.html
+  * **http** (HyperText Transfer Protocol) é um protocolo de comunicação para a transmissão de documentos de hipertext (HTML) na WWW. Ela está presente na camada de aplicação da arquitetura TCP/IP
+  * **www.fiap.com.br** é o nome de domínio, que será traduzido por um servidor de DNS para o endereço de IP do servidor onde está instalado o site da FIAP
+  * **home.html** é o nome do documento que queremos visualizar
+Os equipamentos que disponibilizam os documentos html precisam utlizar programas servidores WWW, dessa forma é possível solicitar a informação de um documento para o servidor através da url.
+Para o usuário acessar o serviço WWW, é necessário a utilização de um programa-cliente denominado browser ou navegador, nele é possível inserir a url da página que queremos acessar , após isso, o browser recebe as informações, interpreta e exibe a página html.
+* Funcionamento da WWW:
+  * O usuário insere no browser a URL da página que deseja acessar
+  * O nome de domínio é traduzido para o endereço de IP do servidor
+  * Com o endereço de IP, o browser envia uma requisição HTTP para o servidor
+  * O servidor processa a requisição e envia uma resposta HTTP com as informações da página HTML
+  * O browser recebe a resposta, interpreta o documento html e mostra a página para o usuário
 
 ##### FTP - Sistema de transferência de arquivos
+File Transfer Protocol, ou Protocolo de transferência de arquivos é o serviço padrão da internet para a transferência de arquivos entre computadores. O funcionamento do FTP se baseia no estabelecimento de uma comunicação entre o cliente FTP e o servidor FTP remoto, o que torna possível navegar na estrutura de diretórios do servidor FTP e executar comandos para a manipulação de diretórios e arquivos.
 
 ##### E-mail - Serviços de correio eletrônico
+Correio eletrônico é outro serviço da internet que tem por objetivo a comunicação e troca de dados entre computadores. O funcionamento desses serviços tem como base um endereço conhecido como e-mail address ou endereço de correio eletrônico. Esse endereço é formado pelo *usuario@dominio*. O usuário representa o identificador de uma caixa postal e o domínio representa o nome de domínio para localizar o equipamento que possui a caixa postal.
+
+Esses serviços são baseados nos protocolos POP3, IMAP e SMTP que estão presentes também na camada de aplicação e são utilizados para enviar e receber as mensagens dos servidores de e-mail.
 
 #### W3C e Web Standards
+A W3C ou World Wide Web Consortium foi criada em 1994, trata-se de uma organização internacional formada por empresas, instituições, pesquisadores e desenvolvedores. Uma equipe em tempo integral e o público trabalham juntos para desenvolver a web em sua potência máxima, criando normas e especificações aplicáveis aos diversos segmentos e setores da web. Esses padrões são chamados de Padrões Web ou Web Standards.
+
+A definição dada pelo W3C para Web Standards pode ser assim traduzida: 
+> Web Standards é um conjunto de normas, diretrizes, remomendações, notas, artigos, tutoriais e afins de caráter técnico, produzidos pelo W3C e destinados a orientar fabricantes, desenvolvedores e projetistas para o uso de práticas que possibilitem a criação de uma Web acessível a todos, independentemetne dos dispositivos usados ou de suas necessidades especiais
+
+Esses documentos estão disponíveis no site da [w3c](https://www.w3.org)
+
+##### Desenvolvimento em Camadas

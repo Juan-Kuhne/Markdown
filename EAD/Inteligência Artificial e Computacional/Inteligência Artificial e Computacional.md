@@ -1,6 +1,6 @@
-﻿# Inteligência Artificial e Computacional
+# Inteligência Artificial e Computacional
 ## Introdução à inteligência artificial
-* ==Computação Natural (CN) - 1960==
+* ::Computação Natural (CN) - 1960::
 	* Formalizada em 2004 por Leandro N. de Castro e Fernando J. Van Zuben
 	* Permeia três formas de implementação
 		* *Computação em que ideias são obtidas através da observação da natureza, que é a inspiração para o desenvolvimento de soluções de problemas complexos*
@@ -18,7 +18,7 @@
 			* Baseados em computação molecular, através de cadeias de DNA (1998)
 			* Computação quântica (2000)
 			* Entre outros
-* ==Inteligência Computacional (IC) - 1994 & Aprendizagem de Máquina - 2007==
+* ::Inteligência Computacional (IC) - 1994 & Aprendizagem de Máquina - 2007::
 	* Surgiu como uma forma de desassociar o que a IA clássica pretendia
 	* Algoritmos de Redes Neurais Artificiais (RNA), Computação Evolutiva (algoritmos genéticos) e Lógica de Fuzzy fizeram parte das técnicas de implementação do IC
 	* O Machine Learning, atualmente muito associado ao Big Data e ao Analytics, foi defendido por T. Mitchell em 1997 e surgiu dos sistemas baseados em conhecimento da IA clássica
@@ -68,7 +68,7 @@
     * Espaço contido na árvore que será processado pelo algoritmo
 
 ### Busca sem informação
-* A busca sem informação, ou busca cega, é realizada sem informação adicional sobre os estados, além da definição do problema. A estratégia é gerar novos estados e verificar se um estado objetivo é alcnçado ou não. Difere na ordem em que os estados são explorados: *busca em largura* ou *em profundidade*
+* A busca sem informação, ou busca cega, é realizada sem informação adicional sobre os estados, além da definição do problema. A estratégia é gerar novos estados e verificar se um estado objetivo é alcançado ou não. Difere na ordem em que os estados são explorados: *busca em largura* ou *em profundidade*
 * Busca em largura
   * A busca em largura (BFS - *Breadth-First Search*) é uma estratégia em que o nó raiz é verificado antes dos nós filhos do nó raiz. Essa estratégia é utilizada recursivamente para os nós internos da árvore (subárvores)
 * Busca em profundidade
