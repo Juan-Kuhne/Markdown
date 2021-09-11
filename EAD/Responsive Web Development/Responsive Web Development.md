@@ -1112,3 +1112,213 @@ Assim podemos concluir que, em geral, os sites necessitam de uma interface mais 
 ![Resultado do código](img/input.jpg)
 
 #### Tags `<select>`, `<option>` e `<optgroup>`
+* Usadas para criar as caixas de seleção (conhecidas como "ComboBox")
+* `<select>`
+  * Define o início e o fim da lista, que pode ser parametrizada com os seguintes atributos:
+    * **atributos globais, autofocus, disabled, name e required**
+      * Funcionamento idêntico ao explicado na tag `<input>`
+    * **multiple**
+      * Permite selecionar mais de um valor na caixa de seleção
+    * **size**
+      * Tamanho na lista em número de linhas, transformando-a em uma lista
+* `<opton>`
+  * Necessária para definir as opções que o usuário terá para escolher na caixa de seleção
+  * Atributos fundamentais:
+    * **disabled**
+      * desabilita a opção, tornando-a indisponível
+    * **value**
+      * Define o valor da opção, ou seja, que valor será submetido caso aquela opção for selecionada
+    * **selected**
+      * Permite definir uma ou mais opções (caso `<select>` seja multiple) que começarão previamente selecionados
+* Exemplo:
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Exemplo de formulário</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form id="formulario" method="POST">
+	  <select id="estcivil" name="estcivil">
+	    <option value="S">Solteiro</option>
+	    <option value="C">Casado</option>
+	    <option value="V" selected>Viúvo</option>
+	    <option value="D">Divorciado</option>
+	  </select>
+	</form>
+  </body>
+</html>
+```
+![Resultado do código](img/tagsSelectOption.jpg)
+* Caso esse formulário fosse submetido, apenas as iniciais dos estados civis seriam enviadas adiante, bem diferente do rótulo visível ao usuário, contido dentro da tag <option>
+* `<optgroup>`
+  * Agrupa as opções em categorias
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Exemplo de formulário</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form id="formulario" method="POST">
+	  <label for="carros">Carros preferidos</label>
+	  <select id="carros" name="carros" size="8" multiple>
+	    <optgroup label="FIAT">
+		 <option value="500">500</option>
+		 <option value="Uno">Palio</option>
+            <option value="Uno">Uno</option>
+          </optgroup>
+          <optgroup label="FORD">
+            <option value="Fiesta">Fiesta</option>
+            <option value="Focus">Focus</option>
+            <option value="Ka">Ka</option>
+          </optgroup> 
+	  </select>
+	</form>
+  </body>
+</html>
+```
+![Resultado do código](img/tagOptgroup.jpg)
+
+#### Tag `<textarea>`
+* Utilizado quando é necessário que o usuário escreva um longo texto, grande demais para caixas de texto comuns
+* Principais atributos:
+  * **atributos globais, autocomplete, autofocus, disabled, maxlength, minlength, name, placeholder, readonly e required**
+    * Funcionamento idêntico ao explicado na tag `<input>`
+  * **cols**
+    * Define o número de colunas, seu tamanho na horizontal (prefira width no CSS)
+  * **rows**
+    * Define o número de linhas, seu tamanho na vertical (prefira height no CSS)
+* Não possue o atributo value: O valor padrão do compo deve ser contido dentro da tag, ou seja, entre `<textarea>` e `</textarea>`
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Exemplo de formulário</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form id="formulario" method="POST">
+      <label for="obs">Observações</label><br>
+      <textarea id="obs" rows="5" cols="50">Texto de exemplo.</textarea>
+    </form>
+  </body>
+</html>
+```
+![Resultado do código](img/tagTextarea.jpg)
+
+#### Tags `<fieldset>` e `<legend>`
+* Possibilitam um agrupamento de campos de um formulário
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Exemplo de formulário</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form id="formulario" method="POST">
+      <fieldset>
+        <legend>Dados pessoais</legend>
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome"><br>
+      
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade"><br>
+      </fieldset>
+    </form>
+  </body>
+</html>
+```
+![Resultado do código](img/tagFieldset.jpg)
+
+#### Tag `<datalist>`
+* Combina `<input type="text">` com `<select>`, ou seja, é uma caixa de seleção que permite digitação
+* Assim como o `<select>` utiliza `<oprion>` para determinar as opções disponíveis
+* Necessita de um `<input>` com o atributo *list*
+* Não possui suporte em navegadores Safari e IE versão 9 e anteriores
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Exemplo de formulário</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form id="formulario" method="POST">
+	 <label for="navegador">Qual seu navegador preferido?</label>
+      <input list="navegadores" name="navegador">
+      <datalist id="navegadores">
+        <option value="Google Chrome">Google Chrome</option>
+        <option value="Mozilla Firefox">Mozilla Firefox</option>
+        <option value="Internet Explorer">Internet Explorer</option>
+        <option value="Opera">Opera</option>
+        <option value="Apple Safari">Apple Safari</option>
+      </datalist>
+    </form>
+  </body>
+</html>
+```
+![Resultado do código](img/tagDatalist.jpg)
+
+#### Tag `<progress>`
+* Possibilita mostrar o prograsso de alguma ação, geralmente utilizado para mostrar o progresso de um upload
+* Utiliza os atributos **value** (valor atual) e **max** (valor total)
+* Nãõ possui suporte em navegadores IE versão 9 e anteriores
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Exemplo de formulário</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form id="formulario" method="POST">
+	 <progress value="25" max="100"></progress>
+    </form>
+  </body>
+</html>
+```
+![Resultado do código](img/tagProgress.jpg)
+
+## CSS
+* O Cascading Style Sheets (CSS) é uma linguagem de estilos para trazer melhores recursos visuais a um documento HTML
+* Foi criada pelo W3C para definir cores, tipologia, posicionamento e mais recursos emm páginas web
+* Possibilita que determinadas propriedades sejam aplicadas, ao mesmo tempo, a diversos elementos de uma página ou site que estejam marcados com uma tag ou atributo específico, assim, facilitando a criação, formatação e manutenção de layouts e estilos de páginas web
+* Existem três maneiras de aplicar, ou utilizar, um código CSS em um documento HTML:
+![3 Aplicações CSS](img/tiposCSS.svg)
+* No caso de aplicação de mais de uma maneira, existe uma hierarquia de qual será executada no caso de conflitos:
+![Precedência CSS](img/precedenciaCSS.svg)
+
+### Declaraçao inline
+* Declarada dentro da tag, misturada com seu conteúdo
+* Dificulta a manutenção do código, caso você queira que a mesma regra seja usada por outro elemento, terá de refazer a mesma declaração no elemento desejado
+* Utiliza o atributo **style**
+```html
+<p style="background-color: #900;">
+  Luke, eu sou seu pai!
+</p>
+```
+
+### Declaração interna
+* Declarada dentro da tag `<style>`, geralmente colocada dentro da tag `<head>`
+* Com ela conseguimos reaproveitar todo o conteúdo de formatação no documento inteiro, porém, para reaproveitar entre diversos documentos, teríamos que copiar e colar em todos. Assim fica complicado realizar a manutenção e manter um padrão de layout e estilos em um sistema inteiro
+```html
+<style type="text/css">
+  p{
+    background-color: #900;
+  }
+</style>
+```
+
+### Declaração externa
+* Declaração em um arquivo externo contendo todo código CSS
+* Uma mesma regra CSS dentro desse arquivo externo pode formatar simultaneamente quantas páginas o desenvolvedor precisar
+* Necessita que os documentos html alvo façam vinculo com o documento CSS com a tag `<link>`, inserida na seção `<head>`
+```html
+<link rel="stylesheet" type="text/css" href="css/style.css">
+```
+
+### Efeito Cascata
