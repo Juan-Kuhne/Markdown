@@ -1284,6 +1284,8 @@ Assim podemos concluir que, em geral, os sites necessitam de uma interface mais 
 ![Resultado do código](img/tagProgress.jpg)
 
 ## CSS
+---
+### Intrudução
 * O Cascading Style Sheets (CSS) é uma linguagem de estilos para trazer melhores recursos visuais a um documento HTML
 * Foi criada pelo W3C para definir cores, tipologia, posicionamento e mais recursos emm páginas web
 * Possibilita que determinadas propriedades sejam aplicadas, ao mesmo tempo, a diversos elementos de uma página ou site que estejam marcados com uma tag ou atributo específico, assim, facilitando a criação, formatação e manutenção de layouts e estilos de páginas web
@@ -1292,7 +1294,7 @@ Assim podemos concluir que, em geral, os sites necessitam de uma interface mais 
 * No caso de aplicação de mais de uma maneira, existe uma hierarquia de qual será executada no caso de conflitos:
 ![Precedência CSS](img/precedenciaCSS.svg)
 
-### Declaraçao inline
+#### Declaraçao inline
 * Declarada dentro da tag, misturada com seu conteúdo
 * Dificulta a manutenção do código, caso você queira que a mesma regra seja usada por outro elemento, terá de refazer a mesma declaração no elemento desejado
 * Utiliza o atributo **style**
@@ -1302,7 +1304,7 @@ Assim podemos concluir que, em geral, os sites necessitam de uma interface mais 
 </p>
 ```
 
-### Declaração interna
+#### Declaração interna
 * Declarada dentro da tag `<style>`, geralmente colocada dentro da tag `<head>`
 * Com ela conseguimos reaproveitar todo o conteúdo de formatação no documento inteiro, porém, para reaproveitar entre diversos documentos, teríamos que copiar e colar em todos. Assim fica complicado realizar a manutenção e manter um padrão de layout e estilos em um sistema inteiro
 ```html
@@ -1313,7 +1315,7 @@ Assim podemos concluir que, em geral, os sites necessitam de uma interface mais 
 </style>
 ```
 
-### Declaração externa
+#### Declaração externa
 * Declaração em um arquivo externo contendo todo código CSS
 * Uma mesma regra CSS dentro desse arquivo externo pode formatar simultaneamente quantas páginas o desenvolvedor precisar
 * Necessita que os documentos html alvo façam vinculo com o documento CSS com a tag `<link>`, inserida na seção `<head>`
@@ -1321,4 +1323,93 @@ Assim podemos concluir que, em geral, os sites necessitam de uma interface mais 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 ```
 
-### Efeito Cascata
+#### Efeito Cascata
+* O CSS recebe esse nome devido ao efeito cascata encontrado em sua aplicação no documento. Isso significa que, ao aplicar mais de um estilo em um elemento, poderá ocorrer uma sobreposição de estilos
+* Sequência da cascata (do mais geral para o mais específico)
+  * Estilo padrão do navegador
+  * Folha de estilo externa (referenciada e/ou importada)
+  * Folha de estilo interna (definida na área de cabeçalho do documento)
+  * Folha de estilo inline (definida dentro de um elemento HTML)
+
+#### Criando uma regra CSS
+* A regra CSS é uma declaração com sintaxe própria que indica como será o estilo de um ou mais elementos HTML
+* Um conjunto deregras forma o que chamamos de  folha de estilos
+* A regra é composta por um seletor, propriedades e seus respectivos valores
+```CSS
+seletor {
+  propriedade: valor;
+}
+
+h1 {
+  color: red;
+}
+```
+* Seletores podem ser elementos HTML como p, h1, h2 etc. Podem ser, também, identificadores que combinamos com o símbolo # e classes que combinamos com o símbolo ponto (.), ambos aplicados antes do nome
+
+### Propriedades e Funcionamentos
+* **font-family**
+  * Define a fonte
+* **Font-size**
+  * Define o tamanho da fonte
+* **Font-weight**
+  * Define a intensidade do peso da fonte, ou seja, o quão negrito você vai deixar a fonte
+* **margin**, **padding** e **border**
+  * Definem as margens do bloco
+  * Todo elemento HTML possui um formato de bloco, cada bloco possui três medidas em sua volta: padding, border e margin
+    * Utilizamos cada uma dessas medidas para dar um respiro ao redor do elemento desejado
+    * Fazem parte do que conhecemos como *box model*
+    * Podemos atribuir as métricas da direção (top, bottom, left, right) de maneira individual ou de forma abreviada
+```css
+.seletor {
+    /* 
+          Escolha a medida para aplicar o espaçamento:
+          - margin
+          - padding
+          - border
+          No exemplo escolhemos a margin, mas o comando
+          para as demais é o mesmo.
+      */
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+
+    /*Formas abreviadas*/
+
+    /*Todas as direções*/
+    margin: 10px;
+
+    /*vertical | horizontal*/
+    margin: 20px 10px;
+
+    /*top | right | bottom | left*/
+    margint: 10px 15px 20px 25px;
+  }
+```
+![Espaçamento bloco HTML](img/paddingBorderMargin.svg)
+![Métricas direcionais bloco HTML](img/boxDirection.svg)
+
+* **object-fit**
+  * Define como o elemento responderá à altura e à largura do seu box
+  * Valores
+    * *fill*
+      * Valor padrão, vai preencher o box com todo o conteúdo sem se preocupar com a distorção aplicada
+    * *contain*
+      * Expandirá ou reduzirá o tamanho da imagem para ocupar o tamanho do box, sepreocupando com a proporção correta do elemento
+    * *cover*
+      * Preencherá a altura e a largura do elemento, mantendo a sua proporção, porém realizará um corte na imagem para se encaixar de maneira adequada
+    * *none*
+      * Ignora as medidas e matém a imagem no tamanho original
+    * *scale-down*
+      * Compara a imagem entre o none e contain e mantém a de menor escala para o box
+* **object-position**
+  * Permite manipular a imagem dentro do box em x e y
+  * `object-position: x% y%;`
+* **border-radius**
+  * Arredonda os cantos
+* **box-shadow**
+  * Aplica uma sombra ao elemento
+  * Recebe os valores de deslocamento em x e y, sendo que valores positivos mantêm o sentido baixo à direita e negativos o oposto. O terceiro parâmetro é o espalhamento dessa sombra (*bluu*) e o quarto é a cor da sombra
+  * `box-shadow: 1px 1px 15px #003300`
+* **display**
+  * 
