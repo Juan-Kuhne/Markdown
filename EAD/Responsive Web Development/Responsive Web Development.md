@@ -1412,4 +1412,29 @@ h1 {
   * Recebe os valores de deslocamento em x e y, sendo que valores positivos mantêm o sentido baixo à direita e negativos o oposto. O terceiro parâmetro é o espalhamento dessa sombra (*bluu*) e o quarto é a cor da sombra
   * `box-shadow: 1px 1px 15px #003300`
 * **display**
-  * 
+  * É usada para trabalhar com o comportamento dos elementos HTML em relação à interação entre eles
+  * Valores:
+    * *inline*
+      * Valor padrão para elementos textos, em que cada um é exibido em frente ao outro, na mesma linha
+    * *inline-block*
+      * Similar ao inline, mas com a possibilidade de trabalhar com as propriedades de largura e altura do bloco
+    * *block*
+      * Valor padrão para elementos containers tipo div, section, main, ul etc.
+    * *flex*
+      * Utilizado para trabalhar com um novo método de layout chamado Flexbox
+    * *grid*
+      * Usado para trabalhar com um novo método de layout chamado Grid Layout
+    * *none*
+      * Exclui o elemento da página
+* **transition**
+  * Permite aos elementos alterarem as propriedades com um determinado tempo e efeito de animação
+* **Position**
+  * Trabalha com as coordenadas passadas por meio das propriedades top, left, bottom e right
+  * *fixed*
+    * O elemento ficará fixo de acordo com as coordenadas estipuladas, indiferente em relação ao restante dos elementos
+  * *relative*
+    * Faz com que o posicionamento seja tratado a partir do canto esquerdo superior do próprio elemento e não mais com o navegador como referência
+  * *absolute*
+    * Como referênciade posicionamento, usa a referência do elemento pai
+* **list-style**
+  * Define qual é o ícone que aparecerá no tópico do item da lista
