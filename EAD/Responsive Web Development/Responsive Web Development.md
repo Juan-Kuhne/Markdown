@@ -99,11 +99,11 @@ Esses documentos estão disponíveis no site da [w3c](https://www.w3.org)
 
 - Podemos dividir o desenvolvimento de páginas web em 3 camadas
 
-| Camada | Linguagem | Objetivo |
-| :-: | :-: | :-: |
-| Estrutura dos dados (Conteúdo) | HTML | Estruturar as informações das páginas |
-| Apresentação | CSS | Formatação de apresentação do conteúdo: _layout, cores, fontes etc._ |
-| Comportação | Javascript | Adiciona interatividade e controle aos elementos do HTML |
+|             Camada             | Linguagem  |                               Objetivo                               |
+| :----------------------------: | :--------: | :------------------------------------------------------------------: |
+| Estrutura dos dados (Conteúdo) |    HTML    |                Estruturar as informações das páginas                 |
+|          Apresentação          |    CSS     | Formatação de apresentação do conteúdo: _layout, cores, fontes etc._ |
+|          Comportação           | Javascript |       Adiciona interatividade e controle aos elementos do HTML       |
 
 - Porque separar o desenvolvimento em camadas?
   - Reaproveitamento de código
@@ -1602,6 +1602,7 @@ h1 {
 ### Manipulando o DOM
 
 - Existem duas formas de inserir um script de JavaScript no arquivo HTML:
+
   - Por meio da tag `<script>` dentro do HTML
     - ```html
       <script type="text/javascript">
@@ -1612,35 +1613,46 @@ h1 {
     - ```html
       <script type="text/javascript" src="js/app.js"></script>
       ```
+
 - Função `alert` $\rightarrow$ apresenta uma caixa de confirmação com a mensagem digitada
+
   - ```html
     <script type="text/javascript">
       alert("Bem-vindo Nutricionista Esportiva!");
     </script>
     ```
   - ![javascript alert function](img/alertFunction.jpg)
+
 - `console.log` $\rightarrow$ exibe a informação digitada no console
+
   - ```
     <script type="text/javascript">
       console.log("Bem-vindo Nutricionista Esportiva!");
     </script>
     ```
   - ![javascript log function](img/console-logFunction.jpg)
+
 - Existe um objeto em JavaScript conhecido como DOM (Document Object Model), que abrange todo conteúdo de uma página HTML. Com ele é possível acessar cada tag e suas propriedades. No código fonte, a palavra-chave para ele é `document`
+
   - ![document on console](img/document-console.jpg)
+
 - Função `querySelector` $\rightarrow$ retorna o elemento DOM digitado (faz a procura por #id, .classe, tag, [data])
+
   - ```javascript
     var titulo = document.querySelector("#brand");
     console.log(titulo);
     var textoTitulo = titulo.querySelector("span");
     console.log(textoTitulo);
     ```
+
 - Trocando propriedades do elemento selecionado:
+
   - ```javascript
     var titulo = document.querySelector("#brand");
     var textoTitulo = titulo.querySelector("span");
     textoTitulo.textContent = "Luna Lovegood - Nutrição e Magia";
     ```
+
 - Adicionando eventos de click:
 
   - ```javascript
@@ -1652,248 +1664,894 @@ h1 {
     ```
 
   - ou:
+
   - ```javascript
-      document.querySelector("form").addEventListener("submit", function (evento) {
+    document
+      .querySelector("form")
+      .addEventListener("submit", function (evento) {
         alert("oi");
       });
     ```
 
 - Criando elementos DOM pelo código:
+
   - ```javascript
-      var span = document.createElement("span");
-      span.textContent = "Text inside the span";
-      div.appendChild(span);
+    var span = document.createElement("span");
+    span.textContent = "Text inside the span";
+    div.appendChild(span);
     ```
+
 - Prevenindo comportamento padrão do formulário
+
   - ```javascript
-      document.querySelector('form').addEventListener('submit', function(evento) {
+    document
+      .querySelector("form")
+      .addEventListener("submit", function (evento) {
         evento.preventDefault();
-        var tr = document.createElement('tr');
+        var tr = document.createElement("tr");
 
         // Código ocultado…
-
       });
     ```
 
 ### Orientação a objetos
 
-## Organizando o sistema
+#### Organizando o sistema
 
 - Criando uma classe:
   - ```javascript
-      class Consulta {
-        constructor() {
-            this.nome = '';
-            this.data = new Date();
-            this.peso = 0.0;
-            this.altura = 0.0;
-        }
+    class Consulta {
+      constructor() {
+        this.nome = "";
+        this.data = new Date();
+        this.peso = 0.0;
+        this.altura = 0.0;
       }
+    }
     ```
 - Instanciando e alterando atributos da classe:
   - ```javascript
-      var consulta = new Consulta();
-      consulta.nome = 'Hermione Granger';
-      consulta.data = new Date('2020-01-20');
-      consulta.peso = 52;
-      consulta.altura = 1.65;
-      console.log(consulta);
+    var consulta = new Consulta();
+    consulta.nome = "Hermione Granger";
+    consulta.data = new Date("2020-01-20");
+    consulta.peso = 52;
+    consulta.altura = 1.65;
+    console.log(consulta);
     ```
 
-## Melhorando o construtor e os métodos da classe
+#### Melhorando o construtor e os métodos da classe
 
 - ```javascript
-    class Consulta {
-      constructor(nome, data, peso, altura) {
-          this.nome = nome;
-          this.data = data;
-          this.peso = peso;
-          this.altura = altura;
-      }
+  class Consulta {
+    constructor(nome, data, peso, altura) {
+      this.nome = nome;
+      this.data = data;
+      this.peso = peso;
+      this.altura = altura;
     }
+  }
   ```
+
 - Instanciando:
+
   - ```javascript
-      var consulta = new Consulta('Hermione Granger', new Date('2020-01-20'), 52, 1.65 );
-    ```
-- Definindo funções:
-  - ```javascript
-      class Consulta {
-        constructor(nome, data, peso, altura) {
-            this.nome = nome;
-            this.data = data;
-            this.peso = peso;
-            this.altura = altura;
-        }
-        
-        calculaIMC() {
-            return this.peso / (this.altura * this.altura);
-        }
-      }
+    var consulta = new Consulta(
+      "Hermione Granger",
+      new Date("2020-01-20"),
+      52,
+      1.65
+    );
     ```
 
-### Encapsulamento
+- Definindo funções:
+
+  - ```javascript
+    class Consulta {
+      constructor(nome, data, peso, altura) {
+        this.nome = nome;
+        this.data = data;
+        this.peso = peso;
+        this.altura = altura;
+      }
+
+      calculaIMC() {
+        return this.peso / (this.altura * this.altura);
+      }
+    }
+    ```
+
+#### Encapsulamento
 
 - Tornar atributos privados (apenas informar porque o js não suporta privacidade de atributos)
+
 - ```javascript
+  class Consulta {
+    constructor(nome, data, peso, altura) {
+      this._nome = nome;
+      this._data = data;
+      this._peso = peso;
+      this._altura = altura;
+    }
+
+    get imc() {
+      return this._peso / (this._altura * this._altura);
+    }
+
+    get nome() {
+      return this._nome;
+    }
+
+    get data() {
+      return this._data;
+    }
+
+    get peso() {
+      return this._peso;
+    }
+
+    get altura() {
+      return this._altura;
+    }
+  }
+  ```
+
+- `Object.freeze` $\rightarrow$ congela valores da classe (mas não os objetos como por exemplo `Date`)
+
+  - ```javascript
     class Consulta {
       constructor(nome, data, peso, altura) {
-          this._nome = nome;
-          this._data = data;
-          this._peso = peso;
-          this._altura = altura;
+        this._nome = nome;
+        this._data = data;
+        this._peso = peso;
+        this._altura = altura;
+        Object.freeze(this);
       }
-
-      get imc() {
-        return this._peso / (this._altura * this._altura);
-      }
-
-      get nome() {
-        return this._nome;
-      }
-
-      get data() {
-        return this._data;
-      }
-
-      get peso() {
-        return this._peso;
-      }
-
-      get altura() {
-        return this._altura;
-      }
+      // Restante do código omitido...
     }
-  ```
-- `Object.freeze` $\rightarrow$ congela valores da classe (mas não os objetos como por exemplo `Date`)
-  - ```javascript
-      class Consulta {
-        constructor(nome, data, peso, altura) {
-            this._nome = nome;
-            this._data = data;
-            this._peso = peso;
-            this._altura = altura;
-            Object.freeze(this);
-        }
-        // Restante do código omitido...
-      }
     ```
+
 - Para prevenir alteração de atributos do tipo `Object` deve-se retornar uma cópia no `get`
+
   - ```javascript
       get data() {
         return new Date(this._data.getTime());
       }
     ```
 
-### Métodos estáticos
+#### Métodos estáticos
 
 - ```javascript
-    class DateHelper {
-      constructor() {
-          throw new Error("Essa classe não pode ser instanciada.");
-      }
-
-      static textoParaData(texto) {
-          return new Date(...
-              texto
-                  .split('-')
-                  .map((item, indice) => item - (indice % 2)));
-      }
-
-      static dataParaTexto(data) {
-          return data.getDate()
-              + "/" + (data.getMonth() + 1)
-              + "/" + data.getFullYear();
-      }
+  class DateHelper {
+    constructor() {
+      throw new Error("Essa classe não pode ser instanciada.");
     }
 
-    let consulta = new Consulta(
-      this._inputNome.value,
-      DateHelper.textoParaData(this._inputData.value),
-      this._inputPeso.value,
-      this._inputAltura.value
-    );
-  ```
-
-### Validação do formato da data
-
-- ```javascript
-    if(!/^d{4}-d{2}-d{2}$/.test(texto)) throw new Error('O formato correto é yyyy-mm-dd');
-  ```
-
-### Trabalhando com Views
-
-- ```javascript
-    class ConsultasView {
-      constructor(elemento) {
-          this._elemento = elemento;
-      }
-
-      update(model) {
-          this._elemento.innerHTML = this._template(model);
-      }
-
-      _template(model) {
-        return `
-            <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Data da Consulta</th>
-                    <th scope="col">Peso (kg)</th>
-                    <th scope="col">Altura (m)</th>
-                    <th scope="col">IMC</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${model.consultas.map(c =>  `
-                    <tr>
-                        <td>${c.nome}</td>
-                        <td>${DateHelper.dataParaTexto(c.data)}</td>
-                        <td>${c.peso}</td>
-                        <td>${c.altura}</td>
-                        <td>${c.imc}</td>
-                    </tr>
-                `).join('')}
-            </tbody>
-            </table>
-        `;
-      }
+    static textoParaData(texto) {
+      return new Date(
+        ...texto.split("-").map((item, indice) => item - (indice % 2))
+      );
     }
 
-    class ConsultaController {
-      constructor() {
-          let $ = document.querySelector.bind(document);
-          this._inputNome = $('#nome');
-          this._inputData = $('#data');
-          this._inputPeso = $('#peso');
-          this._inputAltura = $('#altura');
-          this._listaConsultas = new ListaConsultas();
-          this._consultasView = new ConsultasView($('#consultasView'));
-          this._consultasView.update();
-      }
+    static dataParaTexto(data) {
+      return (
+        data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear()
+      );
     }
+  }
+
+  let consulta = new Consulta(
+    this._inputNome.value,
+    DateHelper.textoParaData(this._inputData.value),
+    this._inputPeso.value,
+    this._inputAltura.value
+  );
   ```
 
 ### Herança
 
 - ```javascript
-    class View {
-      constructor(elemento) {
-          this._elemento = elemento;
-      }
-
-      update(model) {
-          this._elemento.innerHTML = this._template(model);
-      }
+  class View {
+    constructor(elemento) {
+      this._elemento = elemento;
     }
 
-    class MensagemView extends View {
-      constructor(elemento) {
-          super(elemento);
-      }
-      _template(model) {
-          return `<p class="alert alert-info">${model.texto}</p>`;
-      }
+    update(model) {
+      this._elemento.innerHTML = this._template(model);
     }
+  }
+
+  class MensagemView extends View {
+    constructor(elemento) {
+      super(elemento);
+    }
+    _template(model) {
+      return `<p class="alert alert-info">${model.texto}</p>`;
+    }
+  }
   ```
+
+### Validação do formato da data
+
+- ```javascript
+  if (!/^d{4}-d{2}-d{2}$/.test(texto))
+    throw new Error("O formato correto é yyyy-mm-dd");
+  ```
+
+### Trabalhando com Views
+
+- ```javascript
+  class ConsultasView {
+    constructor(elemento) {
+      this._elemento = elemento;
+    }
+
+    update(model) {
+      this._elemento.innerHTML = this._template(model);
+    }
+
+    _template(model) {
+      return `
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <table class="table table-bordered">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <thead class="thead-dark">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <th scope="col">Nome</th>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <th scope="col">Data da Consulta</th>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <th scope="col">Peso (kg)</th>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <th scope="col">Altura (m)</th>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <th scope="col">IMC</th>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </thead>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <tbody>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ${model.consultas
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .map(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    c
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ) =>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `<tr>
+  <td>${c.nome}</td>
+  <td>${DateHelper.dataParaTexto(c.data)}</td>
+  <td>${c.peso}</td>
+  <td>${c.altura}</td>
+  <td>${c.imc}</td>
+</tr>`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                )
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .join(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ""
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                )}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </tbody>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </table>`;
+    }
+  }
+
+  class ConsultaController {
+    constructor() {
+      let $ = document.querySelector.bind(document);
+      this._inputNome = $("#nome");
+      this._inputData = $("#data");
+      this._inputPeso = $("#peso");
+      this._inputAltura = $("#altura");
+      this._listaConsultas = new ListaConsultas();
+      this._consultasView = new ConsultasView($("#consultasView"));
+      this._consultasView.update();
+    }
+  }
+  ```
+
+## JQuery
+
+### Aplicando no HTML
+
+- Fazer download no site [JQuery](https://jquery.com)
+- Adicionar no arquivo
+  - ```html
+    <!DOCTYPE html>
+    <html lang="pt-br">
+      <head>
+        <title>Exemplo de jQuery</title>
+        <meta charset="utf-8" />
+        <script src="jquery-2.min.js"></script>
+      </head>
+      <body></body>
+    </html>
+    ```
+
+### Alô Mundo e o atalho $
+
+- ```javascript
+  $(document).ready(function () {
+    console.log("Alô mundo!");
+  });
+  ```
+- A palavra document entre parênteses é um seletor, a partir do qual podemos acessar o documento como um todo. `ready()` é equivalente a `window.onload()=function()`, sendo assim, ready só será adicionado quando todo documento HTML estiver devidadmente renderizado e pronto para uso
+
+### Seletores
+
+- ```javascript
+  $(document).ready(function () {
+    //Implementa o evento de click no elemento cujo id é "botao".
+    $("#botao").click(function () {
+      //Aplica a folha de estilo "vermelho" em todos os elementos <p>
+      $("p").addClass("vermelho");
+    });
+  });
+  ```
+- ```javascript
+  $(document).ready(function () {
+    //Implementa o evento de click no elemento cujo
+    //id é "botao".
+    $("#botao").click(function () {
+      //Aplica a folha de estilo "azul" em todas as
+      // divs que contiverem a palavra "azul"
+      $("div:contains('azul')").addClass("azul");
+      //Aplica a folha de estilo "naoAzul" em todas as
+      // divs que NÃO contiverem a palavra "azul"
+      $("div:not(:contains('azul'))").addClass("naoAzul");
+    });
+  });
+  ```
+
+### Efeitos visuais práticos
+
+- `.hide()` e `.show()`
+  - esconde (display: none) e mostra um determinado elemento
+- `.slideUp()`
+  - Muda o display deslizando para cima
+- `.slideDown()`
+  - Muda o display deslizando para baixo
+- `.slideToggle()`
+  - Muda o display alternando a direção do slide
+  - Parâmetros:
+    - Velocidade da animação
+    - Tipo (se é linear ou não)
+    - função callback executada ao final da animação
+  - ```javascript
+    $(document).ready(function () {
+      //quadrado começa invisível
+      $("#quadrado").hide();
+      //quando o mouse passar pelo alvo, mostra quadrado
+      $("#alvo").mouseover(function () {
+        $("#quadrado").slideToggle("slow");
+      });
+      //quando o mouse sair do alvo, some com o quadrado
+      $("#alvo").mouseout(function () {
+        $("#quadrado").slideToggle("slow");
+      });
+    });
+    ```
+- `.animate()`
+  - Altera certas propriedades de estilos CSS (não todas) de forma animada, dando um efeito de transição
+  - ```javascript
+    $(document).ready(function () {
+      $("#quadrado").mouseover(function () {
+        $("#quadrado").animate({ width: "200px", height: "200px" });
+      });
+    });
+    ```
+
+### Facilidades em formulários
+
+- `.blur()`
+  - adiciona evento (semelhante ao _.click()_) ativado quando o elemento perde o foco
+- `$(this)`
+  - seleciona o elemento que disparou o evento
+- `.val()`
+  - retorna o conteudo (valor) de um elemento
+- `.next()`
+  - retorna o elemento subsequente do DOM
+- `$('checkbox').is(':checked')`
+  - retorna se a checkbox está marcada ou não
+- `$('checkbox').trigger('click')`
+  - aciona o evento de click na checkbox, marcando-a
+- `$('checkbox').prop('checked', false)`
+  - desmarca a checkbox
+
+### Ajax mais fácil
+
+### Plug-ins
+
+- O framework tem a capacidade de ser expandido, ganhando novas funcionalidades que vão além das concebidas originalmente por seus criadores. Essas soluções são empacotadas e distribuídas com o nome de plug-ins
+- **Timedropper**
+  - Interface diferente para o preenchimento de campos em que se deseja informar um intervalo de tempo usando horas e minutos
+  - Uso:
+    - Baixar o código fonte em [timedropper](http://felicegattuso.com/projects/timedropper/)
+    - Adicionar os arquivos js e css ao html
+    - ativar no js
+      - ```javascript
+        $(document).ready(function () {
+          //  Chamada  do  plug-in.  A  opção  "format"  permite configurar a hora para o formato 0-23 horas.
+          // #tempo é um input do tipo texto
+          $("#tempo").timeDropper({ format: "H:mm" });
+        });
+        ```
+- **Knob**
+  - Cria um botão de dial com um visual atraente, manipulável pelo mouse ou eventos de toque, sem o uso de imagens
+- **Criar plug-in**
+  - ```javascript
+    //Declaração do plug-in
+    $.fn.meuPlugin = function () {
+      console.log("Eureka!");
+    };
+    $(document).ready(function () {
+      //Chamada do plug-in
+      $("#nome").meuPlugin();
+    });
+    ```
+
+### JQueryUI
+
+- Uma biblioteca criada por cima do jQuery focada em interações com a interface de usuário, widgetse efeitos visuais. Com seu uso, o desenvolvedor pode conceber mais facilmente interfaces interativas e animadas que impressionem
+- Pode ser dividida em 3 módulos:
+  - Efeitos visuais
+    - Simples animações de fácil aplicação e parametrização, que permitem animar um elemento HTML com efeitos como explosão, deslizar, sumir (fade), entre outros
+  - Interações
+    - Eventos que permitem maior interatividade com a interface, como a possibilidade de arrastar e soltar elementos, redimensioná-los ou ordená-los, por exemplo
+  - Widgets
+    - Interfaces de usuário já construídas e totalmente customizáveis
+- É possível baixar os componentes de forma fragmentada, sendo esse o método recomendado pois o total é muito extenso e pesado
+
+## Git e Github
+
+### Sistema de controle de versão
+
+- Registra e armazena as alterações feitas no código
+- Git não é a mesma coisa que Github
+  - Github é a rede social de compartilhamento de código, ou seja, é um repositório de códigos fontes que podem ser privados ou abertos
+
+#### Instalação e configuração do GIT
+
+- Baixar o programa do [site do git](https://git-scm.com/) e instalar
+- Escolher uma pasta, clicar com o botão direito do mouse e selecionar a opção _Git Bash Here_
+- O terminal git se abrirá
+- Digitar o comando `git init`, que iniciará o repositório e criará uma pasta oculta chamada _.git_
+- Configurar o repositório com o nome e o email
+  - ```console
+    git config --global user.name "Gustavo Torrente"
+    git config --global user.email "email@fiap.com.br"
+    ```
+- Para conferir se o nome e email foram setados usar os comandos:
+  - ```console
+    git config user.name
+    git config user.email
+    ```
+
+#### Estado dos arquivos e commits
+
+- `git status`
+  - Informa o status dos arquivos
+- `git add arquivo.extensao`
+  - Inicia o rastreamento do arquivo informado
+- `git commit -m "titulo do commit"`
+  - realiza o commit dos arquivos adicionados com o titulo informado
+
+#### Navegação entre as versões
+
+- `git log`
+  - Retorna ID, autor, data e alteração já realizados
+- `git diff`
+  - Lista as alterações realizadas e um contador de quantas foram (ainda não commitadas ou em stage)
+
+#### Desfazendo alterações
+
+### Organizando o trabalho
+
+#### Branches e tags
+
+#### Merge
+
+#### Resolução de conflitos
+
+#### Ignorando arquivos do repositório
+
+### Github
+
+- Rede social de código aberto utilizando o sistema de controle de versão GIT
+
+#### Trabalhando com repositórios remotos
+
+- Git Pull
+  - Sincroniza o repositório remoto no repositório local
+- Git Push
+  - Sincroniza o repositório local no repositório remoto
+
+#### Boas práticas
+
+## ReactJS
+
+- Semelhante ao AngularJS, é uma biblioteca JavaScript capaz de criar componentes, além de gerenciar estados e eventos no browser
+
+### NodeJS
+
+- É um programa que isola o V8 (componente interpretador de JS dos browsers) em um programa executável
+- Pode ser utilizado de diversas formas diferentes:
+  - Interpretar códigos no Back-End (servidor) para gerar páginas e mandá-las para o cliente
+  - Executar códigos para aplicações desktop
+  - Ferramenta para o desenvolvedor, utilizando códigos javascript para gerar outros códigos javascript
+
+### Visual Studio Code
+
+- Ambiente de desenvolvimento integrado (IDE)
+- Possui diversas ferramentas úteis:
+  - Explorer
+  - Terminal integrado
+  - Controle de versionamento
+  - Gerenciamento de extensões
+
+### Primeira aplicação react
+
+- Navegar até a pasta do projeto através do terminal e executar o módulo node para criação de uma aplicação padrão React
+  - ```console
+    cd C:\CodigosReact\
+    npx create-react-app primeiro_app
+    ```
+- Na pasta criada execute o comando `npm run start`
+
+### Principais conceitos
+
+- É baseado em componentes, onde cada um apresenta uma representação em HTML (para ser renderizado) e comportamentos programados em javascript (para interações com o usuário ou o próprio sistema)
+- Uma nova aplicação criada existem 3 pastas:
+  - _node_modules_
+    - Contém os pacotes (instalados com o npm) necessários para a utilização do react
+  - _public_
+    - Contém a página principal do site (index.html)
+  - _src_
+    - Contém diversos arquivos javascript, css entre outros
+
+### JSX: A união entre HTML e JavaScript
+
+- Faz referência a _JavaScript Extension_
+- É fundamental para escrita e uso de componentes react, uma vez que é por meio dele que escrevemos o código html que será inserido na página quando o componente for utilizado
+- No react, os componentes sempre deve ter a primeira letra maiúscula e é assim que o react sabe quando deve utilizar as tags originais do HTML ou buscar em outros arquivos
+
+### Componentes
+
+- Exemplo de componente (App.js)
+  - ```javascript
+    import React, { Component } from "react";
+    import logo from "./logo.svg";
+    import "./App.css";
+    class App extends Component {
+      render() {
+        return (
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <p>
+                Edit <code>src/App.js</code> and save to reload.
+              </p>
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
+              </a>
+            </header>
+          </div>
+        );
+      }
+    }
+    export default App;
+    ```
+
+#### Importação e exportação de códigos
+
+- A instrução export tem a seguinte sintaxe:
+  - `export {var1, var2, var3... [as default]};`
+  - var1, var2 ... são variáveis ou objetos que se deseja exportar e _as default_ é um parâmetro opcional que exporta a variável como elemento principal do arquivo
+- _import_
+  - `import [var],{var1, var2, var3};`
+  - _[var]_ é o nome escolhido para a variável importada, que foi exportada como elemento principal
+  - _var1, var2 ..._ são os nomes das outras variáveis exportadas do código externo que devem ser importadas no código local
+
+#### Codificação do componente
+
+- Entendento o código gerado pelo create-react-app
+  - Uma página index.html é criada com uma div e um id conhecidos
+  - Na pasta src, o arquivo index.js renderiza o componente App na div criada no passo anterior
+  - O componente App foi importado do arquivo App.js. Esse arquivo exporta a classe App, que é um componente react (uma vez que herda a classe component)
+  - A função `render()` é implementada nessa classe, o que permite ao componente ser renderizado na tela com as tags JSX
+  - O comando `npm run start` aciona o NodeJS para efetuar uma série de processamentos para tornar o código react em um arquivo legível para a maioria dos browsers. Além disso, um servidor é criado e disponibilizado para o programador testar a aplicação
+
+### Principais funcionalidades
+
+#### _props_
+
+- Uma _prop_ é a maneira com que o react recebe dados de entrada para um componente. As _props_ são recebidas através de atributos, assim como o HTML faz quando alguma propriedade de tag é configurada (`<a href=”www.fiap.com.br”>Fiap</a>`)
+- Podemos, então, alterar o código de exemplo do react de forma a passar uma propriedade para o componente App
+  - ```javascript
+    import React from "react";
+    import ReactDOM from "react-dom";
+    import "./index.css";
+    import App from "./App";
+    import * as serviceWorker from "./serviceWorker";
+    ReactDOM.render(
+      <App minhaProp="testando" />,
+      document.getElementById("root")
+    );
+    // If you want your app to work offline and load faster, you can change
+    // unregister() to register() below. Note this comes with some pitfalls.
+    // Learn more about service workers: https://bit.ly/CRA-PWA
+    serviceWorker.unregister();
+    ```
+  - Nesse código, enviamos a string "testando" para o componente App. Agora, a próxima etapa é "capturar" essa string do lado do componente
+  - ```javascript
+    import React, { Component } from "react";
+    import logo from "./logo.svg";
+    import "./App.css";
+    class App extends Component {
+      constructor(props) {
+        super(props);
+      }
+      render() {
+        return (
+          <div className="App">
+            <header className="App-header">
+              <p>{this.props.minhaProp}</p>
+              <img src={logo} className="App-logo" alt="logo" />
+              <p>
+                Edit <code>src/App.js</code> and save to reload.
+              </p>
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
+              </a>
+            </header>
+          </div>
+        );
+      }
+    }
+    export default App;
+    ```
+  - Foi criado um construtor para receber os atributos com valores passados e, dentro do _header_, o valor capturado foi usado com uma notação js entre chaves
+  - É possivel passar objetos através desse método
+    - `ReactDOM.render(<AppminhaProp={{a: 1, b: “abc”, c: “https://picsum.photos/200”}} />, document.getElementById('root'));`
+
+#### Estados
+
+- São as variáveis internas do componentes, definidas no construtor dentro do objeto `state`
+- ```javascript
+  import React, { Component } from "react";
+  import logo from "./logo.svg";
+  import "./App.css";
+  class App extends Component {
+    constructor(props) {
+      super(props);
+      this.state = { hora: new Date() };
+    }
+    componentDidMount() {
+      setInterval(() => {
+        this.setState({ hora: new Date() });
+      }, 1000);
+    }
+    render() {
+      return (
+        <div className="App">
+          <header className="App-header">
+            <p>
+              Hora:
+              {this.state.hora.toLocaleTimeString()}
+            </p>
+            <img src={logo} className="App-logo" alt="logo" />
+            <p>
+              Edit <code>src/App.js</code> and save to reload.
+            </p>
+            <a
+              className="App-link"
+              href="https://reactjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn React
+            </a>
+          </header>
+        </div>
+      );
+    }
+  }
+  export default App;
+  ```
+- A função `componentDidMount()` foi criada para a atualização da hora de segundo em segundo. Ela é chamada toda vez que um componente é renderizado na tela. A função `setInterval()` recebe dois parâmetros: a função que é executada de tempos em tempos e o período de chamada da função. O campo hora é alterado através do método `this.setState()`, que deve ser usada ao invés de se alterar o campo manualmente (`this.state.hora = new Date();`)
+
+#### Eventos
+
+- A chamada é feita através do JSX
+  - `<input type=”button” value=”clique aqui” onclick={funcao}/>`
+- Exemplo
+  - ```javascript
+    import React, { Component } from "react";
+    import logo from "./logo.svg";
+    import "./App.css";
+    class App extends Component {
+      constructor(props) {
+        super(props);
+        this.state = { texto: "" };
+        this.clicou = this.clicou.bind(this);
+      }
+      clicou() {
+        this.setState({ texto: "clicou no botão" });
+      }
+      render() {
+        return (
+          <div className="App">
+            <header className="App-header">
+              <input type="button" value="clique aqui" onClick={this.clicou} />
+              <div>{this.state.texto}</div>
+              <img src={logo} className="App-logo" alt="logo" />
+              <p>
+                Edit <code>src/App.js</code> and save to reload.
+              </p>
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
+              </a>
+            </header>
+          </div>
+        );
+      }
+    }
+    export default App;
+    ```
+- A linha `this.clicou = this.clicou.bind(this);` deve estar presente pois quando apontamos ao clique do botão essa função, o objeto thisperde a referência do componente. Se essa linha não estiver presente, o “this” dentro da função clicouestará com o conteúdo undefined. Como uma forma de reapontar o thisda função para o componente, essa linha redefine a função colocando o componente como o objeto thispor meio do método bind()
+
+#### Refs
+
+- Refs são referênciasa tags JSX. Elas são utilizadas para manipular tais tags a partir de métodos ou funções. Uma ref é criada através da função `React.createRef()`.Depois de criadas, é possívelatribuir uma tag JSX através do atributo ref
+- ```javascript
+  import React, { Component } from "react";
+  class Produto extends Component {
+    constructor(props) {
+      super(props);
+      this.referencia = React.createRef();
+    }
+    componentDidMount() {
+      this.referencia.current.value = "Valor configurado via ref";
+    }
+    render() {
+      return <input type="text" ref={this.referencia} value="" />;
+    }
+  }
+  export default Produto;
+  ```
+
+#### Técnicas comuns
+
+##### Variáveis com tags HTML
+
+- É possível criar variáveis e utilizá-las dentro da função render de um componente
+- ```javascript
+  import React, { Component } from "react";
+  class MeuComponente extends Component {
+    render() {
+      let f = <a href="http://www.fiap.com.br">fiap</a>;
+      return (
+        <div>
+          <div>O link da {f}</div>
+          <div>Outro link da {f}</div>
+        </div>
+      );
+    }
+  }
+  export default MeuComponente;
+  ```
+
+##### Funções que retornam JSX
+
+- É possível criar funções e utilizá-las dentro da função render de um componente
+  - ```javascript
+    import React, { Component } from "react";
+    class MeuComponente extends Component {
+      constructor(props) {
+        super(props);
+      }
+      criaLink(nome, url) {
+        return <a href={url}>{nome}</a>;
+      }
+      render() {
+        return (
+          <div>
+            <div>{this.criaLink("Fiap", "http://fiap.com.br")}</div>
+            <div>{this.criaLink("Google", "http://google.com.br")}</div>
+          </div>
+        );
+      }
+    }
+    export default MeuComponente;
+    ```
+
+##### Uso de listas e a função map
+
+- É possível criar funções e utilizá-las dentro da função render de um componente
+- ```javascript
+  import React, { Component } from "react";
+  class MeuComponente extends Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      let v = [1, 2, 3, 4, 5];
+      let h = v.map((valor, indice) => {
+        return <li key={indice}>{valor}</li>;
+      });
+      return (
+        <div>
+          <div>
+            <ul>{h}</ul>
+          </div>
+        </div>
+      );
+    }
+  }
+  export default MeuComponente;
+  ```
+
+## Bootstrap
+
+### Instalando o Bootstrap
+
+- Existem duas maneiras:
+  - Fazendo o download do CSS e JS e adicionando no projeto
+  - Linkar o HTML com o repositório online
+- ```html
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"
+  ></script>
+  ```
+
+### Componentes
+
+- NavBar
+  - Permite criaro um topo de uma página com a nossa marca, menu e até campo de busca
+  - ```html
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand logo" href="#">
+            <i class="fas fa-hiking"></i>
+            Descanse na Rede
+          </a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Hotéis</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Roteiros</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    ```

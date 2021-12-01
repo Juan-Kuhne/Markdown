@@ -1,15 +1,21 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <title>Exemplo de formulário</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="teste.js"></script>
+    <link rel="stylesheet" type="text/css" href="teste.css">
+    <title>Exemplo de plug-in em JQuery</title>
     <meta charset="utf-8">
+    <!-- Arquivos do plug-in -->
+    <script src="timedropper.min.js"></script>
+    <link rel="stylesheet" href="timedropper.min.css">
 </head>
 
 <body>
-    <form id="formulario" method="POST">
-        <label for="nome">Nome Completo: </label>
-        <input type="text" id="nome" value="João Ninguém" disabled>
+    <form>
+        <label for="tempo">Tempo Gasto: </label>
+        <input type="text" id="tempo" style="width: 50px">
     </form>
 </body>
 
